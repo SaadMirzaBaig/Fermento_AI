@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dish Cover Page 2</title>
+    <title>Dish Cover</title>
     <style>
         /* General Styles */
         body {
@@ -311,7 +311,7 @@
     <!-- Three Buttons -->
     <div class="button-container">
         <button class="square-button">
-            <img src="images/Back button.png" alt="Back Icon">
+            <img src="images/Back button.png" alt="Back Icon" id="backBtn">
         </button> <!-- Back Button -->
         <button class="middle-button" id="continue">AVANTI</button> <!-- Middle Button -->
         <button class="square-button">
@@ -333,10 +333,6 @@
             }
         });
 
-        function goBack() {
-            window.location.href = "index.html"; // Go back to camera input page
-        }
-
         document
             .getElementById("cameraInput")
             .addEventListener("change", (event) => {
@@ -346,16 +342,17 @@
                 reader.onload = (e) => {
 
                     sessionStorage.setItem("capturedImage", e.target.result);
-                    window.location.href = "page2.html"; // Redirect to preview page
+                    //window.location.href = "page2.html"; // Redirect to preview page
 
                     const imageSrc = e.target.result;
                     document.getElementById("preview").src = imageSrc; // Display preview
 
-                    //analyzeImage(imageSrc); // Analyze image
                 };
 
                 reader.readAsDataURL(file);
             });
+
+        document.getElementById("backBtn").addEventListener("click", goBack);
 
         document.getElementById("continue").addEventListener("click", () => {
             window.location.href = "index2.html"; // Redirect to next page
@@ -365,8 +362,14 @@
             sessionStorage.removeItem("capturedImage");
             document.getElementById("preview").src = "images/Logo.png"; // Display preview
 
-            //window.location.href = "index.html"; // Redirect to camera input page
         });
+
+
+        function goBack() {
+            window.location.href = "index.html"; // Go back to camera input page
+            sessionStorage.clear();
+        }
+
     </script>
 </body>
 
