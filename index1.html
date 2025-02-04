@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dish Cover Page 2</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #F8F1E4;
+            /* Background color */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(78, 40, 23, 0.68);
+            /* #4e2817 with 68% opacity */
+            padding: 20px 0;
+        }
+
+        header img.logo {
+            display: block;
+            margin: 0 auto;
+            max-width: 150px;
+            /* Logo size */
+            width: 100%;
+            /* Make logo responsive */
+            height: auto;
+        }
+
+        /* Centered Text and Button Styles */
+        .center-content {
+            margin: 20px 0;
+            padding: 0 20px;
+            /* Add padding for smaller screens */
+        }
+
+        /* Load Godiva Regular font */
+        @font-face {
+            font-family: 'Godiva Regular';
+            src: url('./Godiva-Reguler.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Load Acumin Variable Concept font */
+        @font-face {
+            font-family: 'Acumin Variable Concept';
+            src: url('./Acumin-Variable-Concept.ttf') format('truetype');
+            font-weight: normal;
+            font-style: regular;
+        }
+
+        .center-content h1 {
+            font-family: 'Godiva Regular', serif;
+            /* Use Godiva Regular font */
+            font-size: 4rem;
+            /* Increased font size */
+            color: #932226;
+            margin-bottom: 20px;
+        }
+
+        .center-content p {
+            font-family: 'Acumin Variable Concept', sans-serif;
+            /* Use Acumin Variable Concept font */
+            font-size: 1.2rem;
+            color: #932226;
+            /* Text color */
+            margin: 20px 0;
+        }
+
+        /* Custom File Input Button */
+        .camera-input-label {
+            display: inline-block;
+            background-color: #C07A3F;
+            /* Button color */
+            color: white;
+            padding: 15px 30px;
+            font-family: "Godiva Regular", serif;
+            /* Larger button size */
+            font-size: 1.5rem;
+            /* Larger font size */
+            border-radius: 10px;
+            /* Less round edges */
+            cursor: pointer;
+            margin-top: 20px;
+            /* Add space above the button */
+            transition: background-color 0.3s ease;
+            /* Smooth hover effect */
+        }
+
+        .camera-input-label:hover {
+            background-color: #A5632D;
+            /* Darker shade on hover */
+        }
+
+        /* Hide the default file input */
+        #cameraInput {
+            display: none;
+        }
+
+        /* Centered Image Styles */
+        .centered-image {
+            display: block;
+            margin: 40px auto;
+            /* Center the image */
+            width: 80%;
+            /* Wider width */
+            max-width: 600px;
+            /* Maximum width */
+            height: 200px;
+            /* Fixed height */
+            object-fit: cover;
+            /* Ensure the image covers the area */
+            border-radius: 20px;
+            /* Rounded borders */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            /* Add a subtle shadow */
+        }
+
+        /* Three Buttons Styles */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            /* Space between buttons */
+            margin-top: 10px;
+            /* Space above buttons */
+            padding: 0 20px;
+            /* Add padding for smaller screens */
+            flex-wrap: wrap;
+            /* Allow buttons to wrap on smaller screens */
+        }
+
+        .button-container button {
+            font-family: 'Acumin Variable Concept', sans-serif;
+            background-color: #C07A3F;
+            /* Button color */
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            /* Larger button size */
+            font-size: 1.2rem;
+            border-radius: 10px;
+            /* Round edges */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+        }
+
+        .button-container button:hover {
+            background-color: rgba(78, 40, 23, 0.8);
+            /* Darker shade on hover */
+        }
+
+        /* Square Buttons (Back and Forward) */
+        .button-container button.square-button {
+            width: 50px;
+            /* Smaller square size */
+            height: 50px;
+            /* Smaller square size */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            /* Remove padding */
+            flex: 0 0 auto;
+            /* Prevent stretching */
+
+        }
+
+        .button-container button.square-button img {
+            width: 50px;
+            /* Adjust image size */
+            height: 50px;
+            /* Adjust image size */
+        }
+
+        /* Button 2 (Middle Button) */
+        .button-container button.middle-button {
+            font-family: "Godiva Regular", serif;
+            padding: 15px 20px;
+            /* Shorter width */
+            min-width: 100px;
+            /* Minimum width */
+            flex: 0 0 auto;
+            /* Prevent stretching */
+        }
+
+        /* Full-width Image at the Bottom */
+        .full-width-image {
+            width: 100%;
+            display: block;
+            height: auto;
+            /* Make images responsive */
+            margin-top: auto;
+            /* Push to the bottom */
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .center-content h1 {
+                font-size: 3rem;
+                /* Smaller font size for tablets */
+            }
+
+            .center-content p {
+                font-size: 1rem;
+                /* Smaller font size for tablets */
+            }
+
+            header img.logo {
+                max-width: 120px;
+                /* Slightly smaller logo for tablets */
+            }
+
+            .centered-image {
+                width: 80%;
+                /* Wider on smaller screens */
+                height: 220px;
+                /* Slightly shorter height */
+            }
+
+            .button-container button.middle-button {
+                min-width: 200px;
+                /* Smaller buttons for tablets */
+                padding: 10px 15px;
+                /* Smaller padding for tablets */
+                font-size: 1.4rem;
+            }
+
+            .button-container button.square-button img {
+                width: 50px;
+                /* Smaller image size for tablets */
+                height: 50px;
+                /* Smaller image size for tablets */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .center-content h1 {
+                font-size: 2.5rem;
+                /* Smaller font size for mobile */
+            }
+
+            .center-content p {
+                font-size: 0.9rem;
+                /* Smaller font size for mobile */
+            }
+
+            header img.logo {
+                max-width: 100px;
+                /* Smaller logo for mobile */
+            }
+
+            .centered-image {
+                width: 85%;
+                /* Almost full width on mobile */
+                height: 200px;
+                /* Shorter height for mobile */
+            }
+
+            .button-container button.middle-button {
+                min-width: 200px;
+                /* Smaller buttons for mobile */
+                padding: 8px 12px;
+                /* Smaller padding for mobile */
+                font-size: 1.3rem;
+
+            }
+
+            .button-container button.square-button img {
+                width: 50px;
+                /* Smaller image size for mobile */
+                height: 50px;
+                /* Smaller image size for mobile */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header with Logo -->
+    <header>
+        <a href="index.html">
+            <img src="images/Logo.png" alt="Logo" class="logo">
+        </a>
+    </header>
+
+    <!-- Top Content: Dish Cover Text and Button -->
+    <div class="center-content">
+        <h1>DISH COVER</h1>
+        <p>Scatta una foto al tuo piatto per scoprirne tutte le caratteristiche nutrizionali!</p>
+        <!-- Custom File Input Button -->
+        <label for="cameraInput" class="camera-input-label">CARICA UN ALTRO FILE</label>
+        <input type="file" accept="image/*" capture="camera" id="cameraInput">
+    </div>
+
+    <!-- Centered Image -->
+    <img src="" alt="" class="centered-image" id="preview">
+    <!-- Replace with your image path -->
+
+    <!-- Three Buttons -->
+    <div class="button-container">
+        <button class="square-button">
+            <img src="images/Back button.png" alt="Back Icon">
+        </button> <!-- Back Button -->
+        <button class="middle-button" id="continue">AVANTI</button> <!-- Middle Button -->
+        <button class="square-button">
+            <img src="images/X button.png" alt="remove image" id="removeImage">
+        </button> <!-- remove image Button -->
+    </div>
+
+    <!-- Full-width Image at the Bottom -->
+    <img src="images/Bottom icons bar.png" alt="Full-width Image" class="full-width-image">
+    <!-- Replace with your image path -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let imgData = sessionStorage.getItem("capturedImage");
+            if (imgData) {
+                document.getElementById("preview").src = imgData;
+            } else {
+                window.location.href = "index.html"; // Redirect back if no image is found
+            }
+        });
+
+        function goBack() {
+            window.location.href = "index.html"; // Go back to camera input page
+        }
+
+        document
+            .getElementById("cameraInput")
+            .addEventListener("change", (event) => {
+                const file = event.target.files[0];
+                const reader = new FileReader();
+
+                reader.onload = (e) => {
+
+                    sessionStorage.setItem("capturedImage", e.target.result);
+                    window.location.href = "page2.html"; // Redirect to preview page
+
+                    const imageSrc = e.target.result;
+                    document.getElementById("preview").src = imageSrc; // Display preview
+
+                    //analyzeImage(imageSrc); // Analyze image
+                };
+
+                reader.readAsDataURL(file);
+            });
+
+        document.getElementById("continue").addEventListener("click", () => {
+            window.location.href = "index2.html"; // Redirect to next page
+        });
+
+        document.getElementById("removeImage").addEventListener("click", () => {
+            sessionStorage.removeItem("capturedImage");
+            document.getElementById("preview").src = "images/Logo.png"; // Display preview
+
+            //window.location.href = "index.html"; // Redirect to camera input page
+        });
+    </script>
+</body>
+
+</html>

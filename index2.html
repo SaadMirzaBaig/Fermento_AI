@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dish Cover Page 2</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #F8F1E4;
+            /* Background color */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(78, 40, 23, 0.68);
+            /* #4e2817 with 68% opacity */
+            padding: 20px 0;
+        }
+
+        header img.logo {
+            display: block;
+            margin: 0 auto;
+            max-width: 150px;
+            /* Logo size */
+            width: 100%;
+            /* Make logo responsive */
+            height: auto;
+        }
+
+        /* Centered Text and Button Styles */
+        .center-content {
+            margin: 20px 0;
+            padding: 0 20px;
+            /* Add padding for smaller screens */
+        }
+
+        /* Load Godiva Regular font */
+        @font-face {
+            font-family: 'Godiva Regular';
+            src: url('./Godiva-Reguler.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Load Acumin Variable Concept font */
+        @font-face {
+            font-family: 'Acumin Variable Concept';
+            src: url('./Acumin-Variable-Concept.ttf') format('truetype');
+            font-weight: normal;
+            font-style: regular;
+        }
+
+        .center-content h1 {
+            font-family: 'Godiva Regular', serif;
+            /* Use Godiva Regular font */
+            font-size: 4rem;
+            /* Increased font size */
+            color: #932226;
+            margin-bottom: 20px;
+        }
+
+        .center-content p {
+            font-family: 'Acumin Variable Concept', sans-serif;
+            /* Use Acumin Variable Concept font */
+            font-size: 1.2rem;
+            color: #932226;
+            /* Text color */
+            margin: 20px 0;
+        }
+
+        /* Rectangular Box */
+        .rectangular-box {
+            background-color: #932226;
+            padding: 20px;
+            border-radius: 10px;
+            /* Rounded edges */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow */
+            margin: 20px auto;
+            /* Center the box */
+            max-width: 600px;
+            /* Maximum width */
+            width: 75%;
+            /* Responsive width */
+            text-align: center;
+            /* Center the text inside the box */
+        }
+
+        /* Style the text inside the rectangular box */
+        .rectangular-box p {
+            font-size: 3rem;
+            /* Adjust the size as needed */
+            color: white;
+            /* Text color white */
+            font-family: 'Godiva Regular', serif;
+            /* Use the Godiva Regular font */
+            margin: 0;
+            /* Optional: Remove extra margin */
+        }
+
+        /* Centered Image Styles */
+        .centered-image {
+            display: block;
+            margin: 40px auto;
+            /* Center the image */
+            width: 80%;
+            /* Wider width */
+            max-width: 600px;
+            /* Maximum width */
+            height: 200px;
+            /* Fixed height */
+            object-fit: cover;
+            /* Ensure the image covers the area */
+            border-radius: 20px;
+            /* Rounded borders */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            /* Add a subtle shadow */
+        }
+
+        /* Description Text */
+        .description-text {
+            font-family: 'Acumin Variable Concept', sans-serif;
+            font-size: 1rem;
+            /* Smaller font size */
+            color: #333;
+            margin: 20px auto;
+            /* Center the text */
+            max-width: 600px;
+            /* Maximum width */
+            width: 80%;
+            /* Responsive width */
+        }
+
+        /* Dropdown Buttons Container */
+        .dropdown-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            /* Space between buttons */
+            margin: 20px auto;
+            /* Center the container */
+            max-width: 600px;
+            /* Maximum width */
+            width: 80%;
+            /* Responsive width */
+        }
+
+        /* Dropdown Button Styles */
+        .dropdown-button {
+            background-color: #932226;
+            /* Button color */
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 1.5rem;
+            border-radius: 10px;
+            /* Round edges */
+            cursor: pointer;
+            text-align: center;
+            /* display: flex; */
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+            /* Smooth hover effect */
+            position: relative;
+            /* Establish a positioning context for the arrow */
+            font-family: "Godiva Regular", serif;
+
+        }
+
+        .dropdown-button:hover {
+            background-color: #761B1E
+                /* Darker shade on hover */
+        }
+
+        .dropdown-button::after {
+            content: "▼";
+            /* Downward arrow */
+            font-size: 0.8rem;
+            position: absolute;
+            right: 20px;
+            /* Align with the horizontal padding */
+            top: 50%;
+            transform: translateY(-50%);
+            /* Vertically center the arrow */
+        }
+
+        /* New arrow style for open state */
+        .dropdown-button.open::after {
+            content: "▲";
+            /* Upward arrow */
+        }
+
+        /* Dropdown Content */
+        .dropdown-content {
+            display: none;
+            /* Hidden by default */
+            background-color: #F8F1E4;
+            padding: 15px;
+            border-radius: 0 0 10px 10px;
+            /* Rounded edges only at the bottom */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow */
+            border-top: none;
+            /* Remove top border */
+            margin-top: -17px;
+            /* Remove margin */
+            border: 2px solid #932226;
+            /* Border with the specified color */
+
+        }
+
+        /* Show Dropdown Content */
+        .dropdown-content.active {
+            display: block;
+            /* Show when active */
+        }
+
+
+        /* Full-width Image at the Bottom */
+        .full-width-image {
+            width: 100%;
+            display: block;
+            height: auto;
+            /* Make images responsive */
+            margin-top: auto;
+            /* Push to the bottom */
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .center-content h1 {
+                font-size: 3rem;
+                /* Smaller font size for tablets */
+            }
+
+            .center-content p {
+                font-size: 1rem;
+                /* Smaller font size for tablets */
+            }
+
+            header img.logo {
+                max-width: 120px;
+                /* Slightly smaller logo for tablets */
+            }
+
+            .centered-image {
+                width: 80%;
+                /* Wider on smaller screens */
+                height: 220px;
+                /* Slightly shorter height */
+            }
+
+            .description-text {
+                font-size: 0.9rem;
+                /* Smaller font size for tablets */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .center-content h1 {
+                font-size: 2.5rem;
+                /* Smaller font size for mobile */
+            }
+
+            .center-content p {
+                font-size: 0.9rem;
+                /* Smaller font size for mobile */
+            }
+
+            header img.logo {
+                max-width: 100px;
+                /* Smaller logo for mobile */
+            }
+
+            .centered-image {
+                width: 85%;
+                /* Almost full width on mobile */
+                height: 200px;
+                /* Shorter height for mobile */
+            }
+
+            .description-text {
+                font-size: 0.8rem;
+                /* Smaller font size for mobile */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header with Logo -->
+    <header>
+        <a href="index.html">
+            <img src="images/Logo.png" alt="Logo" class="logo">
+        </a>
+    </header>
+
+    <!-- Top Content: Dish Cover Text and Button -->
+    <div class="center-content">
+        <h1>DISH COVER</h1>
+        <p>Scatta una foto al tuo piatto per scoprirne tutte le caratteristiche nutrizionali!</p>
+    </div>
+
+    <!-- Rectangular Box -->
+    <div class="rectangular-box">
+        <!-- Add content here if needed -->
+        <p></p>
+    </div>
+
+    <!-- Centered Image -->
+    <img src="" alt="Centered Image" class="centered-image" id="preview">
+    <!-- Replace with your image path -->
+
+    <!-- Description Text -->
+    <div class="description-text">
+        Questo è un esempio di testo descrittivo sotto l'immagine. Puoi aggiungere qui ulteriori dettagli o
+        informazioni.
+    </div>
+
+    <!-- Dropdown Buttons Container -->
+    <div class="dropdown-container">
+        <!-- Dropdown Button 1 -->
+        <button class="dropdown-button" onclick="toggleDropdown(1, this)">INGREDIENTI</button>
+        <div class="dropdown-content" id="dropdown-content-1">
+            Contenuto del dropdown per l'opzione 1. Puoi aggiungere qui ulteriori dettagli o informazioni.
+        </div>
+
+        <!-- Dropdown Button 2 -->
+        <button class="dropdown-button" onclick="toggleDropdown(2, this)">ALLERGENI</button>
+        <div class="dropdown-content" id="dropdown-content-2">
+            Contenuto del dropdown per l'opzione 2. Puoi aggiungere qui ulteriori dettagli o informazioni.
+        </div>
+
+        <!-- Dropdown Button 3 -->
+        <button class="dropdown-button" onclick="toggleDropdown(3, this)">VALORI NUTRIZIONALI</button>
+        <div class="dropdown-content" id="dropdown-content-3">
+            Contenuto del dropdown per l'opzione 3. Puoi aggiungere qui ulteriori dettagli o informazioni.
+        </div>
+    </div>
+
+
+    <!-- Full-width Image at the Bottom -->
+    <img src="images/Bottom icons bar.png" alt="Full-width Image" class="full-width-image">
+    <!-- Replace with your image path -->
+
+    <script>
+
+        // Include your API keys here
+        const GOOGLE_VISION_API_KEY = "";
+        const CHATGPT_API_KEY = "";
+
+        function toggleDropdown(id, btn) {
+            const dropdownContent = document.getElementById(`dropdown-content-${id}`);
+            dropdownContent.classList.toggle("active"); // Toggle dropdown content
+
+            // Toggle the "open" class on the button to update the arrow
+            btn.classList.toggle("open");
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            let imgData = sessionStorage.getItem("capturedImage");
+            if (imgData) {
+                document.getElementById("preview").src = imgData;
+                analyzeImage(imgData); // Analyze image
+            } else {
+                window.location.href = "index.html"; // Redirect back if no image is found
+            }
+        });
+
+        function goBack() {
+            window.location.href = "index.html"; // Go back to camera input page
+        }
+
+        // Analyze the image using the Google Vision API.
+        async function analyzeImage(base64Image) {
+            const url = `https://vision.googleapis.com/v1/images:annotate?key=${GOOGLE_VISION_API_KEY}`;
+            const requestBody = {
+                requests: [
+                    {
+                        image: { content: base64Image.split(",")[1] }, // Remove the data prefix
+                        features: [{ type: "LABEL_DETECTION", maxResults: 10 }],
+                    },
+                ],
+            };
+
+            try {
+                const response = await fetch(url, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(requestBody),
+                });
+                const result = await response.json();
+                console.log("Vision API Response:", result);
+                processVisionResult(result);
+            } catch (error) {
+                console.error("Error with Vision API:", error);
+            }
+        }
+
+        // Process the Vision API results.
+        function processVisionResult(result) {
+            const labels =
+                result.responses[0]?.labelAnnotations?.map(item => item.description) || [];
+            if (labels.length === 0) {
+                console.error("No recognizable items found.");
+                return;
+            }
+            console.log("Detected Labels:", labels);
+            sendToChatGPT(labels);
+        }
+
+        function cleanJSONResponse(responseStr) {
+            // Remove ```json and ``` markers
+            return responseStr.replace(/```(json)?/g, '').trim();
+        }
+
+        async function sendToChatGPT(labels) {
+            const prompt = `The image contains the following items: ${labels.join(", ")}. 
+
+            Based on these items, identify the single best matching dish from the menu of the Italian restaurant "Fermento".
+            Focus only on food-related items.
+
+            For the chosen dish, extract:
+            - The dish name.
+            - The main ingredients from the dish description.
+
+            Return your answer as a valid JSON object with exactly two keys:
+            • "dish_name": (string) the name of the dish.
+            • "ingredients": (array) a list of strings representing the main ingredients.
+
+            Do not include any additional commentary or formatting.
+
+            ### Specific Dishes:
+
+            1. If you identify any dish with rice, it may correspond to one of the following risotto dishes:
+            - RISOTTO ALLO ZAFFERANO
+            - RISOTTO ALLA PARMIGIANA
+            - RISOTTO AGLI ASPARAGI
+            - RISOTTO AI FORMAGGI DI MONTAGNA
+            - RISOTTO AL BAROLO
+
+            2. If you identify any burger, it may correspond to one of the following:
+            - **HAMBURGER AL PEPE VERDE**
+                - Pane croccante*, 220 g di Scottona* sfumato con brandy e servito con la sua salsa* al pepe verde. Contorno di patate al forno*.
+            - **HAMBURGER ALLA CREMA DI PARMIGIANO**
+                - Pane croccante*, 220 g di Scottona* sfumato con vino bianco, servito con la sua salsa* al Parmigiano Reggiano. Contorno di patate al forno*.
+            - **HAMBURGER ALLA VORONOFF**
+                - Pane croccante*, 220 g di Scottona* sfumato con Cognac, servito con la sua salsa* Voronoff. Contorno di patate al forno*.
+            - **HAMBURGER ALLA SENAPE DOLCE**
+                - Pane croccante*, 220 g di Scottona* sfumato con Cognac, servito con la sua salsa* a base di senape dolce. Contorno di patate al forno*.
+
+                3. **If you identify any steak**, it may correspond to one of the following:
+            - **STINCO FERMENTO**
+                - Stinco di suino nazionale rosolato e cotto a bassa temperatura per esaltarne i sapori, servito con la sua salsa ristretta. Contorno di crauti e patate al forno*.
+            - **VITELLO FONDENTE**
+                - Sofficissimo guanciale di vitello cotto a bassa temperatura, servito con patate al forno* e spinaci*.
+            - **MANZO ALL’OLIO**
+                - Olio extravergine d’oliva e carne di Scottona per un sofficissimo manzo all’olio cotto a bassa temperatura. Servito con spinaci* e purè di patate*.
+            - **TARTARE DI MANZO**
+                - Carne cruda di manzo con senape, cipolle di Cannara, capperi, limone, arancia, olio e sale. Contorno di insalata e pomodori.
+            - **COTECHINO E LENTICCHIE**
+                - Fette di cotechino cotto a vapore e finito a bassa temperatura per la massima morbidezza accompagnato da lenticchie.
+            - **COTOLETTA DI POLLO**
+                - Petto di pollo* con doppia panatura. Servito con patate fritte**.
+            - **COSCIA DI POLLO AL LIMONE**
+                - Cotta con limone e timo. Servita con patate fritte**.
+            - **CARTUCCERA**
+                - Costine di suino nazionale marinate con ristretto di vino bianco. Cotte a bassa temperatura con salvia, rosmarino e paprika dolce. Contorno di crauti e purè.
+            - **COSTINE BBQ**
+                - Costine di suino nazionale marinate in salsa BBQ, servite con patate fritte**.
+            - **SPEZZATINO ALLE CIPOLLE**
+                - Bocconcini di reale di manzo cotto a bassa temperatura con cipolle stufate. Servito con purè di patate. `;
+
+
+            try {
+                const response = await fetch(
+                    "https://api.openai.com/v1/chat/completions", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${CHATGPT_API_KEY}`,
+                    },
+                    body: JSON.stringify({
+                        model: "gpt-4o", // Switch to "gpt-4" if required
+                        messages: [
+                            {
+                                role: "system",
+                                content: `You are an AI assistant specializing in food and culinary descriptions. 
+                                    Analyze food-related items and generate detailed responses based on a restaurant menu.
+                                     Your output must be valid JSON as specified.`
+                            }
+                            ,
+                            { role: "user", content: prompt },
+                        ],
+                        max_tokens: 2000,
+                    }),
+                });
+
+                const resultData = await response.json();
+                console.log("ChatGPT Response:", resultData);
+                const aiResponse = resultData.choices[0].message.content.trim();
+
+                const cleanedResponse = cleanJSONResponse(aiResponse);
+
+                console.log(cleanedResponse);
+
+                let dishData;
+                try {
+                    dishData = JSON.parse(cleanedResponse);
+                } catch (parseError) {
+                    console.error("Error parsing JSON response:", parseError);
+                    // Fallback values if parsing fails.
+                    dishData = { dish_name: "Unknown Dish", ingredients: [] };
+                }
+
+                // Update the rectangular box with the dish name.
+                const rectangularBoxText = document.querySelector('.rectangular-box p');
+                if (rectangularBoxText) {
+                    rectangularBoxText.innerText = dishData.dish_name;
+                }
+                // Update the first dropdown content with the ingredients as a list.
+                const dropdownContent1 = document.getElementById("dropdown-content-1");
+                if (dropdownContent1) {
+                    if (Array.isArray(dishData.ingredients) && dishData.ingredients.length > 0) {
+                        dropdownContent1.innerHTML = "<ul>" +
+                            dishData.ingredients.map(ing => `<li>${ing}</li>`).join('') +
+                            "</ul>";
+                    } else {
+                        dropdownContent1.innerText = "No ingredients found.";
+                    }
+                }
+            } catch (error) {
+                console.error("Error with ChatGPT API:", error);
+            }
+        }
+    </script>
+</body>
+
+</html>
