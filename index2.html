@@ -358,13 +358,13 @@
         <!-- Dropdown Button 2 -->
         <button class="dropdown-button" onclick="toggleDropdown(2, this)">ALLERGENI</button>
         <div class="dropdown-content" id="dropdown-content-2">
-            Contenuto del dropdown per l'opzione 2. Puoi aggiungere qui ulteriori dettagli o informazioni.
+            Loading allergies...
         </div>
 
         <!-- Dropdown Button 3 -->
         <button class="dropdown-button" onclick="toggleDropdown(3, this)">VALORI NUTRIZIONALI</button>
         <div class="dropdown-content" id="dropdown-content-3">
-            Contenuto del dropdown per l'opzione 3. Puoi aggiungere qui ulteriori dettagli o informazioni.
+            loading nutritions...
         </div>
     </div>
 
@@ -453,12 +453,17 @@
             For the chosen dish, extract:
             - The dish name.
             - The main ingredients from the dish description.
+            - Possible allergies from main ingredients.
+            - Nutritions from  the ingredients.
 
-            Return your answer as a valid JSON object with exactly two keys:
+
+            Return your answer as a valid JSON object with exactly four keys:
             • "dish_name": (string) the name of the dish.
             • "ingredients": (array) a list of strings representing the main ingredients.
+            • "allergies": (array) a list of strings representing the possible  allergies from ingredients.
+            • "nutritions": (array) a list of strings representing the nutritionsfrom the main.
 
-            Do not include any additional commentary or formatting.
+            Do not include any additional commentary or formatting. Reply no food found if the image isn't food-related.
 
             ### Specific Dishes:
 
@@ -557,6 +562,30 @@
                             "</ul>";
                     } else {
                         dropdownContent1.innerText = "No ingredients found.";
+                    }
+                }
+
+                // Update the first dropdown content with the ingredients as a list.
+                const dropdownContent2 = document.getElementById("dropdown-content-2");
+                if (dropdownContent2) {
+                    if (Array.isArray(dishData.allergies) && dishData.allergies.length > 0) {
+                        dropdownContent2.innerHTML = "<ul>" +
+                            dishData.allergies.map(ing => `<li>${ing}</li>`).join('') +
+                            "</ul>";
+                    } else {
+                        dropdownContent2.innerText = "No allergies found.";
+                    }
+                }
+
+                // Update the first dropdown content with the ingredients as a list.
+                const dropdownContent3 = document.getElementById("dropdown-content-3");
+                if (dropdownContent3) {
+                    if (Array.isArray(dishData.nutritions) && dishData.nutritions.length > 0) {
+                        dropdownContent3.innerHTML = "<ul>" +
+                            dishData.nutritions.map(ing => `<li>${ing}</li>`).join('') +
+                            "</ul>";
+                    } else {
+                        dropdownContent3.innerText = "No nutritions found.";
                     }
                 }
             } catch (error) {
